@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template e Diretivas - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .wrapper {
+            width: 100%;
+        }
+        .container {
+            max-width: 980px;
+            margin: auto;
+        }
+        .title {
+            color: #41B883;
+            padding: 20px 0px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <main class="wrapper">
+            <div class="container">
+                <h3 class="title">Curso Completo de Vuejs.</h3>
+                
+                <!-- V-Bind -->
+                <a :href="href">{{href}}</a>
+                
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                href: 'https://www.origamid.com/'
+            }
+        });
+    </script>
+</body>
+</html>
