@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio V-If - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p>Biscoitos: {{estoqueBiscoito}}</p>
+       <p>Carrinho: {{carrinho}}</p>
+       <button v-show="estoqueBiscoito" @click="AddCarrinho">ADD CARRINHO</button>
+       <button v-show="carrinho" @click="removeCarrinho">REMOVER CARRINHO</button>
+       <div v-if="carrinho >= 7">
+           Estoque de biscoitos ja acabou!
+       </div>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                estoqueBiscoito: 7,
+                carrinho: 0
+            },
+            methods: {
+                AddCarrinho() {
+                    this.carrinho++
+                    this.estoqueBiscoito--
+                },
+                removeCarrinho() {
+                    this.carrinho--
+                    this.estoqueBiscoito++
+                }
+            }
+        });
+    </script>
+</body>
+</html>

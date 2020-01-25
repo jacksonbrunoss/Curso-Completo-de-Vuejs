@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-On - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- O V-ON é uma diretiva que permite observamos eventos nas tags. -->
+        <button @click="handleClick">Clique Aqui!</button>
+        <button @click="ativo = !ativo">Toggle</button>
+        <p v-if="ativo">Mostrar Text</p>
+        <p @mousemove="handleMove">Esse é o mouse x: {{mouse.x}}</p>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                ativo: true,
+                mouse: ''
+            },
+            methods: {
+                handleClick(e) {
+                    console.log(e);
+                },
+                handleMove(e) {
+                    this.mouse = e;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

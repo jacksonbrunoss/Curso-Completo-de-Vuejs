@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed e Watch - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{total}}
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+               preco: 199,
+               desconto: 20
+            },
+            computed: {
+                total() {
+                    return "R$ " + (this.preco - this.desconto)
+                }
+            },
+            methods: {
+                
+            }
+        });
+    </script>
+</body>
+</html>

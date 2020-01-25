@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-For - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+       <ul>
+           <li v-for="(cliente, index) in clientes" :key="index">
+               Nome: {{cliente.nome}} | Idade: {{cliente.idade}}
+           </li>
+       </ul>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                clientes: [
+                    {nome: 'Jackson', idade: 23},
+                    {nome: 'Marta', idade: 19},
+                    {nome: 'João Vitor', idade: 20},
+                    {nome: 'Isaac', idade: 20},
+                ]
+            },
+            methods: {
+                
+            }
+        });
+    </script>
+</body>
+</html>

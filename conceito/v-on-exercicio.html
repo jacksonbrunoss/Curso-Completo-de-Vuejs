@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio V-On - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <li><a @click.prevent="Click" href="https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_63464c8c53fc49f499982cc3a6469491">Apple</a></li>
+        <li><a @click.prevent="Click" href="https://cloud.iexapis.com/stable/stock/googl/quote?token=pk_63464c8c53fc49f499982cc3a6469491">Google</a></li>
+        <li><a @click.prevent="Click" href="https://cloud.iexapis.com/stable/stock/amzn/quote?token=pk_63464c8c53fc49f499982cc3a6469491">Amazon</a></li>
+        <li><a @click.prevent="Click" href="https://cloud.iexapis.com/stable/stock/ebay/quote?token=pk_63464c8c53fc49f499982cc3a6469491">Ebay</a></li>
+        <li><a @click.prevent="Click" href="https://cloud.iexapis.com/stable/stock/pypl/quote?token=pk_63464c8c53fc49f499982cc3a6469491">PayPal</a></li>
+        
+        {{acao}}
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                acao: {}
+            },
+            methods: {
+                Click(e) {
+                    console.log(e);
+                    const event = e.currentTarget.href;
+                    fetch(`${event}`)
+                    .then(res => res.json())
+                    .then(r => {
+                        this.acao = r;
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

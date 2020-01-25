@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-If - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p v-if="logado">Ta sim jovi!</p>
+       <p v-else> Ta não em!</p>
+
+       <h3 v-show="logado">Tambem to!</h3>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                logado: true
+            },
+            methods: {
+                
+            }
+        });
+    </script>
+</body>
+</html>
