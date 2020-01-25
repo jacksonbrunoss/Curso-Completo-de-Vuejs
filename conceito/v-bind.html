@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>V-Bind - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    .verde {
+        color: green;
+    }
+    .vermelho {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a :href="link" target="_blanck">Link Google</a>
+        <p :class="comprou ? 'verde' : 'vermelho'">{{comprou ? 'Obrigado por comprar!' : 'Compre porfavor!' }}</p>
+        <button @click="GetCompra">Compre agora!</button>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                link: 'https://www.google.com',
+                comprou: true,
+            },
+            methods: {
+                GetCompra() {
+                    this.comprou = !this.comprou;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

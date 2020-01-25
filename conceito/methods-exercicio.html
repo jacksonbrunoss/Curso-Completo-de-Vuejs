@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios Methods - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="puxarAcoes">Ações</button></br>
+        latestPrice: {{api.latestPrice}}</br>
+        latestTime: {{api.latestTime}}</br>
+        companyName: {{api.companyName}}
+    </div>
+
+    <script>
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            api: {},
+        },
+        methods: {
+            puxarAcoes() {
+                fetch(`https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_63464c8c53fc49f499982cc3a6469491`)
+                    .then(res => res.json())
+                    .then( json => {
+                        this.api = json
+                    })
+            }
+        }
+    })
+    </script>
+</body>
+</html>

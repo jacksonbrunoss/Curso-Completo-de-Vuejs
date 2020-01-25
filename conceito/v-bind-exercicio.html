@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio V-Bind - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+    .verde {
+        color: green;
+    }
+    .vermelho {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="GetAction">Puxar Ações</button>
+        <p :class="aapl.marketCap > googl.marketCap ? 'verde' : 'vermelho'">{{aapl.companyName}}: {{aapl.marketCap}}</p>
+        <p :class="googl.marketCap > aapl.marketCap ? 'verde' : 'vermelho'">{{googl.companyName}}: {{googl.marketCap}}</p>
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                aapl: {},
+                googl: {},
+            },
+            methods: {
+                puxarAcaoAple() {
+                    fetch(`https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_63464c8c53fc49f499982cc3a6469491`)
+                        .then(res => res.json())
+                        .then(json => {
+                            this.aapl = json
+                        })
+                },
+                puxarAcaoGoogle() {
+                    fetch(`https://cloud.iexapis.com/stable/stock/googl/quote?token=pk_63464c8c53fc49f499982cc3a6469491`)
+                        .then(res => res.json())
+                        .then(res => {
+                            this.googl = res
+                        })
+                },
+                GetAction() {
+                    this.puxarAcaoAple();
+                    this.puxarAcaoGoogle();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

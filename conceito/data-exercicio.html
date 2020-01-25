@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio - Data - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <!-- Crie uma instâcia que mostre baseado no valor do lado do quadrado
+        o seu perimetro (lx4) e área (lxl).
+        O lado do quadrado deve ser um estado reativo
+    -->
+    <div id="app">
+        {{empresa}}, {{produto}}
+    </div>
+
+    <div id="root">
+        Lado: {{ lado }}
+        Perimetro: {{ lado * 4 }}
+        Área: {{ lado * lado }}
+    </div>
+
+    <script>
+    
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            empresa: 'CiberMid',
+            produto: 'WebSites'
+        }
+    });
+    const vm2 = new Vue({
+        el: '#root',
+        data: {
+            lado: 30
+        }
+    })
+    </script>
+</body>
+</html>

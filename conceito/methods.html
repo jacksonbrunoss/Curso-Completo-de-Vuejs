@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Methods - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{compra}}</p>
+        <button @click="mudarCompra('Guitarra')">Guitarra</button>
+        <button @click="mudarCompra('Violão')">Violão</button>
+    </div>
+    <script>
+    const vue = new Vue({
+        el: '#app',
+        data: {
+            api: `https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_63464c8c53fc49f499982cc3a6469491`,
+            compra: '',
+        },
+        methods: {
+            mudarCompra(instrumento) {
+                this.compra = instrumento;
+            }
+        }
+    })
+    </script>
+</body>
+</html>
