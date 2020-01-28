@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio V-Model - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            margin-top: 100px;
+        }
+        form {
+            max-width: 700px;
+            height: auto;
+            margin: auto;
+        }
+
+        .box-input, .box-textarea, .box-btn {
+            padding: 10px;
+        }
+        .box-input > label {
+            display: block;
+        }
+        .box-textarea > label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <div class="box-input">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" v-model="form.nome" />
+            </div>
+            <div class="box-input">
+                <label for="email">Email</label>
+                <input type="mail" name="email" id="email" v-model="form.email" />
+            </div>
+            <div class="box-input">
+                <label for="telefone">Telefone</label>
+                <input type="tel" name="telefone" id="telefone" v-model="form.telefone" />
+            </div>
+            <div class="box-textarea">
+                <label for="messagem">Messagem</label>
+                <textarea name="messagem" id="" v-model="form.msg"></textarea>
+            </div>
+            <div class="box-btn">
+                <button class="btn" @click.prevent="SendMail">Enviar Messagem</button>
+            </div>
+        </form> 
+        <div>
+            <ul>
+                <li v-for="(result, key) in results">
+                    {{key}} : {{result}}</br>
+                </li>
+            </ul>
+            {{results}}
+        </div>       
+    </div>
+    <script>
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                form: {
+                    nome: '',
+                    email: '',
+                    telefone: '',
+                    msg: '',
+                },
+                results: {}
+            },
+            methods: {
+                SendMail() {
+                    this.results = {
+                        nome: this.nome,
+                        email: this.email,
+                        telefone: this.telefone,
+                        msg: this.msg
+                    }
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
