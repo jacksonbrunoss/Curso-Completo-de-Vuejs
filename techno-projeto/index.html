@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TECHNO</title>
+    <title>Techno</title>
     <script src="./vuejs/vue.js"></script>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <div id="app">
-        {{produtos}}
+        <!-- Section - Modal -->
+        <section class="modal">
+            {{produto}}
+        </section>
+        <!-- Section - Produtos -->
+        <section class="produtos">
+            <div v-for="item in produtos" :key="item.id" class="produto" @click="fetchProduto(item.id)">
+                <img :src="item.img" :alt="item.nome" class="produto-img">
+                <div class="produto-info">
+                    <span>{{item.preco | numeroPreco}}</span>
+                    <h2>{{item.nome}}</h2>
+                </div>
+            </div>
+        </section>
+        
     </div>
     <script src="./script/app.js"></script>
 </body>

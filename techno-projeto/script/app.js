@@ -1,7 +1,14 @@
 const vue = new Vue({
     el: "#app",
     data: {
-        produtos: []
+        produtos: [],
+        produto: []
+    },
+    filters: {
+        numeroPreco(valor) {
+            console.log(valor);
+            return valor.toLocaleString("pt-BR", {style: "currency", currency: "BRL" });
+        }
     },
     methods: {
         fetchProdutos() {
@@ -9,6 +16,13 @@ const vue = new Vue({
             .then(r => r.json())
             .then(r => {
                 this.produtos = r;
+            })
+        },
+        fetchProduto(id) {
+            fetch(`./api/produtos/${id}/dados.json`)
+            .then(r => r.json())
+            .then(r => {
+                this.produto = r;
             })
         }
     },
