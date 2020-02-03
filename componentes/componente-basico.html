@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Componentes Basico - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Componente Local -->
+            <componente-local></componente-local>
+        <!-- Componente Global -->
+            <componente-global></componente-global>
+
+        <botao-contador></botao-contador>
+    </div>
+    <script>
+        const ComponeteLocal = {
+            name: "ComponenteLocal",
+            template: `<p>Local</p>`
+        }
+        Vue.component("ComponenteGlobal", {
+            template: `<p>Global</p>`
+        });
+        Vue.component("BotaoContador", {
+            data() {
+                return {
+                    total: 0
+                }
+            },
+            template: `
+                <button @click="Incrementar">Contar: {{total}}</button>
+            `,
+            methods: {
+                Incrementar() {
+                    this.total++
+                }
+            },
+        });
+
+        const vue = new Vue({
+            el: '#app',
+            data: {
+              msg: 'Olá'
+            },
+            components: {
+                ComponenteLocal
+            }
+        });
+    </script>
+</body>
+</html>
