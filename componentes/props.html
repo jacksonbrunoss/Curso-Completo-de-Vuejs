@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Props - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <lista-produtos :frutinhas="frutas"></lista-produtos>
+    </div>
+    <script>
+        const ListaProdutos = {
+            name: 'ListaProdutos',
+            props: ["frutinhas"],
+            template: `
+                <ul>
+                    {{frutinhas}}
+                    <li>Teste</li>
+                </ul>
+            `
+        }
+
+        const vue = new Vue({
+            el: '#app',
+            data: {
+              frutas: ["Banana", "Laranja", "Uva"],
+            },
+            components: {
+                ListaProdutos
+            }
+        });
+    </script>
+</body>
+</html>

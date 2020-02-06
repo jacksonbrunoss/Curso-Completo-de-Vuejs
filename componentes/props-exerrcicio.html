@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio Props - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form-acoes></form-acoes>
+    </div>
+    <script>
+        const ResultForm = {
+            name: 'ResultForm',
+            props: ['results'],
+            template: `
+                <div>
+                    <ul>
+                        <li v-for="(result, index) in results" :key="result + index">
+                            {{index}} : {{result}}
+                        </li>
+                    </ul>    
+                </div>
+            `,
+        }
+
+        const FormAcoes = {
+            name: 'FormAcoes',
+            template: `
+                <div>
+                    <input type="text" v-model="code" />
+                    <button @click="PuxarAcoes">Puxar Ações</button>
+                    <result-form :results="arr"></result-form>
+                </div>
+            `,
+            data() {
+                return {
+                    arr: [],
+                    code: ''
+                }
+            },
+            components: {
+                ResultForm
+            },
+            methods: {
+                PuxarAcoes() {
+                    try {
+                        fetch(`https://cloud.iexapis.com/stable/stock/${this.code}/quote?token=pk_63464c8c53fc49f499982cc3a6469491`)
+                        .then(response => response.json())
+                        .then(response => {
+                            this.arr = response;
+                        })
+                    }
+                    catch(e) { console.log('Aconteceu algum erro', e)}
+                }
+            },
+        }
+
+        const vue = new Vue({
+            el: '#app',
+            data: {
+              
+            },
+            components: {
+                FormAcoes,
+            }
+        });
+        
+    </script>
+</body>
+</html>

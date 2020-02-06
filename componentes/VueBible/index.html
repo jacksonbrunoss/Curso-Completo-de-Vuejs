@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUEBible - Curso Completo de Vuejs</title>
+    <script src="./vuejs/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <livros-biblia></livros-biblia>
+    </div>
+    <script>
+        Vue.component('LivrosBiblia', {
+            name: 'LivrosBiblia',
+            template: `
+                <div>
+                    {{books.verses}}
+                </div>`,
+            data() {
+                return {
+                    books: []
+                }
+            },
+            methods: {
+                PuxarLivros() {
+                    try {
+                        fetch(`https://bibleapi.co/api/verses/nvi/sl/24`)
+                        .then(res => res.json())
+                        .then(res => {
+                            this.books = res;
+                            console.log(this.books = res)
+                        })
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                }
+            },
+            created() {
+                this.PuxarLivros();
+            },
+        })
+        const vue = new Vue({
+            el: '#app',
+            data: {
+              
+            },
+            
+        });
+    </script>
+</body>
+</html>
